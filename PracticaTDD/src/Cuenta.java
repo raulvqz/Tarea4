@@ -40,11 +40,7 @@ public class Cuenta {
 	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
 	}
-
-	public void ingresar(double x) {
-		this.setSaldo(100.0);
-	}
-
+	
 	public List<Movimiento> getmMovimientos() {
 		return mMovimientos;
 	}
@@ -53,7 +49,14 @@ public class Cuenta {
 		this.mMovimientos = mMovimientos;
 	}
 
-	public void retirar(double x) {
+	public void ingresar(double x) {
+		this.saldo = this.saldo + x;
+	}
 
+	
+
+	public void retirar(double x) {
+		if(saldo >= x)
+			this.saldo = this.saldo - x;
 	}
 }
