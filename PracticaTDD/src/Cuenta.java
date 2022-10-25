@@ -1,5 +1,7 @@
 import java.util.List;
 
+enum signo{D,H};
+
 public class Cuenta {
 	String mNumero;
 	String nTitular;
@@ -50,13 +52,17 @@ public class Cuenta {
 	}
 
 	public void ingresar(double x) {
-		this.saldo = this.saldo + x;
+		if(x<0)
+			throw new Exception("No se puede ingresar una cantidad negativa");
+		
+		Movimiento m = new Movimiento(x, signo.H, "ingreso");
+		this.movimientos.add(m);
 	}
 
 	
 
 	public void retirar(double x) {
-		if(saldo >= x)
+		if((saldo - x) >= -500)
 			this.saldo = this.saldo - x;
 	}
 }
